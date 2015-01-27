@@ -1,0 +1,17 @@
+RewriteEngine On
+ 
+<IfModule mod_rewrite.c>
+	RewriteEngine On
+	RewriteBase /
+ 
+	# Do not do anything for already existing files and folders
+	RewriteCond %{REQUEST_FILENAME} -f [OR]
+	RewriteCond %{REQUEST_FILENAME} -d
+	RewriteRule .+ - [L]
+ 
+	#Respect this rules for redirecting:
+	RewriteRule ^([a-zA-Z0-9_-]+)/([a-zA-Z0-9_-]+)/(.*)$ index.php?control=$1&action=$2&params=$3 [QSA,L]
+	RewriteRule ^([a-zA-Z0-9_-]+)/(.*)$ index.php?control=$1&action=$2 [QSA,L]
+	RewriteRule ^(.*)$ index.php?control=$1 [QSA,L]
+ 
+</IfModule>

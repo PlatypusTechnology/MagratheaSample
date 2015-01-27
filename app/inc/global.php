@@ -1,16 +1,16 @@
 <?php
 
-	// include pear for dreamhost:
-	// set_include_path("." . PATH_SEPARATOR . ($UserDir = "/home/ormeni/pear/php" . PATH_SEPARATOR . get_include_path()));
+	// include pear (if not installed):
+	set_include_path(".".PATH_SEPARATOR.("/Users/paulohenrique/www/magrathea_sample/pear/php".PATH_SEPARATOR.get_include_path()));
 
 	session_start();
 
 	error_reporting(E_ALL ^ E_STRICT);
 
-	$magrathea_path = "/Users/paulovelho/Sites/Magrathea";
-	$site_path = "/Users/paulovelho/Sites/botecaria/malte";
+	$magrathea_path = "/Users/paulohenrique/www/magrathea_sample/Magrathea";
+	$site_path = "/Users/paulohenrique/www/magrathea_sample";
 
-	include($magrathea_path."/Magrathea/LOAD.php");
+	include($magrathea_path."/LOAD.php");
 	include($magrathea_path."/Smarty/Smarty/Smarty.class.php");
 
 //	MagratheaDebugger::Instance()->SetType("debug");

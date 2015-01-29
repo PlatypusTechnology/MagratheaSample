@@ -1,7 +1,7 @@
 <?php
 
 	// include pear (if not installed):
-	set_include_path(".".PATH_SEPARATOR.("/Users/paulohenrique/www/magrathea_sample/pear/php".PATH_SEPARATOR.get_include_path()));
+	set_include_path(".".PATH_SEPARATOR.("/Users/paulohenrique/www/magrathea_sample/Magrathea/libs/pear/php".PATH_SEPARATOR.get_include_path()));
 
 	session_start();
 
@@ -11,7 +11,6 @@
 	$site_path = "/Users/paulohenrique/www/magrathea_sample";
 
 	include($magrathea_path."/LOAD.php");
-	include($magrathea_path."/Smarty/Smarty/Smarty.class.php");
 
 //	MagratheaDebugger::Instance()->SetType("debug");
 

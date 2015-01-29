@@ -18,7 +18,9 @@ class MagratheaQuery{
 	protected $where;
 	protected $whereArr;
 	protected $order;
+	protected $page;
 	protected $limit;
+	protected $group;
 
 	protected $sql;
 
@@ -42,14 +44,19 @@ class MagratheaQuery{
 		$this->where = "";
 		$this->whereArr = array();
 		$this->order = "";
+		$this->page = 0;
+		$this->limit = null;
+		$this->group = null;
 		return $this;
 	}
 
 	static public function Create(){
 		return new self();
 	}
-	static public function Select(){
-		return new self();
+	static public function Select($sel=""){
+		$new_me = new self();
+		$new_me->SelectStr($sel);
+		return $new_me;
 	}
 	static public function Delete(){
 		return new MagratheaQueryDelete();
@@ -72,7 +79,9 @@ class MagratheaQuery{
 	}
 
 	public function SelectStr($sel) {
-		array_push($this->selectArr, $sel);
+		if(!empty($sel)){
+			array_push($this->selectArr, $sel);
+		}
 		return $this;
 	}
 	public function SelectObj($obj){
@@ -95,7 +104,7 @@ class MagratheaQuery{
 	public function HasOne($object, $field){
 		$object = $this->GiveMeThisObjectCorrect($object);
 		$this->SelectObj($object);
-		$joinGlue = " INNER JOIN ".$object->GetDbTable()." ON ".$this->obj_base->GetDbTable().".".$field." = ".$object->GetDbTable().".".$this->obj_base->GetPkName();
+		$joinGlue = " INNER JOIN ".$object->GetDbTable()." ON ".$this->obj_base->GetDbTable().".".$field." = ".$object->GetDbTable().".".$object->GetPkName();
 		array_push($this->joinArr, $joinGlue);
 		array_push($this->obj_array, $object);
 		return $this;
@@ -126,6 +135,7 @@ class MagratheaQuery{
 		return $this;
 	}
 
+	public function OrderBy($o){ return $this->Order($o); }
 	public function Order($o){
 		$this->order = $o;
 		return $this;
@@ -136,10 +146,21 @@ class MagratheaQuery{
 		return $this;
 	}
 
+	public function GroupBy($g){ return $this->Group($g); }
+	public function Group($g){
+		$this->group = $g;
+		return $this;
+	}
+
+	public function Page($p){ // there is a page zero.
+		$this->page = $p;
+		return $this;
+	}
+
 	public function SQL(){
 		$this->sql = "";
 		$sqlSelect = $this->select;
-		if(count($this->selectArr) > 0){
+		if(count($this->selectArr) > 1){
 			$sqlSelect .= implode(', ', $this->selectArr);
 		} else {
 			$sqlSelect .= "*";
@@ -155,14 +176,36 @@ class MagratheaQuery{
 		if(trim($sqlWhere)!=""){
 			$this->sql .= " WHERE ".$sqlWhere;
 		}
+		if(trim($this->group)!=""){
+			$this->sql .= " GROUP BY ".$this->group;
+		}
 		if(trim($this->order)!=""){
 			$this->sql .= " ORDER BY ".$this->order;
 		}
 		if(trim($this->limit)!=""){
-			$this->sql .= " LIMIT ".$this->limit;
+			$this->sql .= " LIMIT ".($this->page*$this->limit).", ".$this->limit;
 		}
 
 		return $this->sql;
+	}
+
+	public function Count(){
+		$sqlCount = "SELECT COUNT(1) AS ok ";
+		$sqlCount .= " FROM ".$this->tables;
+		if(count($this->joinArr) > 0){
+			$sqlCount .= " ".implode(' ', $this->joinArr)." ";
+		}
+		$sqlWhere = $this->where;
+		if(count($this->whereArr) > 0){
+			$sqlWhere .= $this->where.implode(" AND ", $this->whereArr);
+		}
+		if(trim($sqlWhere)!=""){
+			$sqlCount .= " WHERE ".$sqlWhere;
+		}
+		if(trim($this->group)!=""){
+			$sqlCount .= " GROUP BY ".$this->group;
+		}
+		return $sqlCount;
 	}
 
 	// STATIC AND HELPERS:

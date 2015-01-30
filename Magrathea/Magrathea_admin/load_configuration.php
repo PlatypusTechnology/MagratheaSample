@@ -76,7 +76,7 @@ $environment = MagratheaConfig::Instance()->GetEnvironment();
 		<content>
 			<div class='row-fluid'>
 				<div class='span6 center'>
-					<button class='btn' onClick='testConnection();'><i class="fa fa-arrow-right"></i><i class="fa fa-database"></i>&nbsp;&nbsp;&nbsp;&nbsp;Test Connection</button>
+					<button class='btn' onClick='testConnection();'><i class="fa fa-arrow-right"></i><i class="fa fa-database"></i>&nbsp;&nbsp;&nbsp;&nbsp;Test Connection</button><br/>
 				</div>
 				<div class="span6" id="database_result">
 				</div>

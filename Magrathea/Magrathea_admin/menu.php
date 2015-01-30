@@ -3,6 +3,7 @@
 require_once ("admin_load.php");
 
 $tables = getAllTables($configSection["db_name"]);
+//p_r($tables);
 $objects = getAllObjects();
 
 ?>
@@ -33,7 +34,7 @@ $objects = getAllObjects();
     </li>
     <li><a onClick="loadCoder();" id="menu_coder"><i class="fa fa-pencil"></i> Generate Code</a></li>
     <li><a onClick="loadPlugins();" id="menu_plugins"><i class="fa fa-thumb-tack"></i> Plugins</a></li>
-	<li><a onClick="loadDatabaseManager();" id="menu_migration"><i class="fa fa-database"></i> Database Migration</a></li>
+	<li><a onClick="loadDatabaseManager();" id="menu_migration"><i class="fa fa-database"></i> Database</a></li>
     <li class="submenu"><a onClick="loadTests();" id="menu_tests"><i class="fa fa-flask"></i> Tests</a>
     	<div id="tests_response"></div>
     </li>

@@ -126,13 +126,14 @@ class Magdb{
 		$options['use_transactions'] = true;
 		$options['default_table_type'] = 'InnoDB';
 		try{
-			$this->mdb2 = @MDB2::connect($this->dsn, $options);
+			$this->mdb2 = MDB2::factory($this->dsn, $options);
 			if ($this->pear->isError($this->mdb2)) {
 				$this->connectionErrorHandle("Could not connect to database!");
 			}
 			@$this->mdb2->setCharset("utf8");
 			@$this->mdb2->setFetchMode($this->fetchmode);
 		} catch (Exception $ex) {
+			p_r($ex);
 			throw new MagratheaDBException($ex->getMessage());
 		}
 		return true;
@@ -196,6 +197,7 @@ class Magdb{
 		$this->LogControl($sql);
 		$this->OpenConnectionPlease();
 		$result = $this->mdb2->queryAll($sql);
+		p_r($result);
 		if ($this->pear->isError($result)) {
 			$this->ErrorHandle($result, $sql);
 		}

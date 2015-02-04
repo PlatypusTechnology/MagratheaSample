@@ -1,0 +1,162 @@
+[2015-02-03 11:39:57] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 11:58:57] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:04:56] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:10:50] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:11:33] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:15:41] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:36:10] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:37:00] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:37:31] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:41:18] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:41:31] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:41:45] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:44:59] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:45:31] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:46:19] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:46:46] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:46:55] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:46:56] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:47:01] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:47:03] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:47:24] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 12:50:16] =  ERROR!!! query error: [ INSERT INTO tab_directors (name) VALUES (:name)  ]
+
+[2015-02-03 04:03:05] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-03 04:03:47] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:14:27] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:16:39] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:17:50] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:18:47] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:26:17] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:26:45] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:33:47] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:35:10] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:36:19] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:48:46] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:51:10] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:51:45] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:52:04] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:52:55] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:53:10] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:53:22] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:56:59] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:57:00] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 11:57:31] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 12:02:49] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 12:02:50] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 12:04:54] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 12:05:11] =  ERROR!!! query error: [ UPDATE tab_movies SET name=:name,year=:year,director_id=:director_id WHERE id=:id ]
+
+[2015-02-04 12:31:58] = this nice message for testing
+
+[2015-02-04 12:31:58] = adding a new message for testing
+
+[2015-02-04 12:33:00] = this nice message for testing
+
+[2015-02-04 12:33:00] = adding a new message for testing
+
+[2015-02-04 12:33:59] = this nice message for testing
+
+[2015-02-04 12:33:59] = adding a new message for testing
+
+[2015-02-04 12:34:54] = this nice message for testing
+
+[2015-02-04 12:34:54] = adding a new message for testing
+
+[2015-02-04 12:35:25] = this nice message for testing
+
+[2015-02-04 12:35:25] = adding a new message for testing
+
+[2015-02-04 12:35:25] = this nice message for testing
+
+[2015-02-04 12:35:25] = adding a new message for testing
+
+[2015-02-04 12:36:28] = this nice message for testing
+
+[2015-02-04 12:36:28] = adding a new message for testing
+
+[2015-02-04 12:36:44] = this nice message for testing
+
+[2015-02-04 12:36:44] = adding a new message for testing
+
+[2015-02-04 12:37:00] = this nice message for testing
+
+[2015-02-04 12:37:00] = adding a new message for testing
+
+[2015-02-04 12:37:02] = this nice message for testing
+
+[2015-02-04 12:37:02] = adding a new message for testing
+
+[2015-02-04 12:37:29] = this nice message for testing
+
+[2015-02-04 12:37:29] = adding a new message for testing
+
+[2015-02-04 12:38:42] = this nice message for testing
+
+[2015-02-04 12:38:42] = adding a new message for testing
+
+[2015-02-04 12:39:07] = this nice message for testing
+
+[2015-02-04 12:39:07] = adding a new message for testing
+
+[2015-02-04 12:39:16] = this nice message for testing
+
+[2015-02-04 12:39:16] = adding a new message for testing
+
+[2015-02-04 12:40:17] = this nice message for testing
+
+[2015-02-04 12:40:17] = adding a new message for testing
+
+[2015-02-04 12:40:40] = this nice message for testing
+
+[2015-02-04 12:40:40] = adding a new message for testing
+
+[2015-02-04 12:40:57] = this nice message for testing
+
+[2015-02-04 12:40:57] = adding a new message for testing
+

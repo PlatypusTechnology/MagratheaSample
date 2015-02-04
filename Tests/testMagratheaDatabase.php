@@ -11,8 +11,8 @@
 
 		// is Database connecting?
 		function testConnectDatabase(){
-			$env = MagratheaConfigStatic::GetConfig("general/use_environment");
-			$configSection = MagratheaConfigStatic::GetConfigSection($env);
+			$env = MagratheaConfig::Instance()->GetEnvironment();
+			$configSection = MagratheaConfig::Instance()->GetConfigSection($env);
 			$magdb = Magdb::Instance();
 			$magdb->SetConnection($configSection["db_host"], $configSection["db_name"], $configSection["db_user"], $configSection["db_pass"]);
 			$this->assertTrue( $magdb->OpenConnectionPlease() );	
@@ -25,8 +25,8 @@
 		private $magdb = null;
 
 		function setUp(){
-			$env = MagratheaConfigStatic::GetConfig("general/use_environment");
-			$configSection = MagratheaConfigStatic::GetConfigSection($env);
+			$env = MagratheaConfig::Instance()->GetEnvironment();
+			$configSection = MagratheaConfig::Instance()->GetConfigSection($env);
 			$this->magdb = Magdb::Instance();
 			$this->magdb->SetConnection($configSection["db_host"], $configSection["db_name"], $configSection["db_user"], $configSection["db_pass"]);
 		}
@@ -56,8 +56,8 @@
 		}
 
 		// tests if queries as an ordered row
-		function testSelectQueryRowOrdered(){
-			$this->magdb->SetFetchMode("ordered");
+		function testSelectQueryRowObject(){
+			$this->magdb->SetFetchMode("object");
 			$query = "SELECT 1 AS ok";
 			$result = $this->magdb->QueryRow($query);
 			$this->assertEqual($result->ok, 1);
@@ -69,6 +69,14 @@
 			$query = "SELECT 1 AS ok";
 			$result = $this->magdb->QueryRow($query);
 			$this->assertEqual($result["ok"], 1);
+		}
+
+		function testIfAllColumnNamesComesInLowerCase(){
+			$this->magdb->SetFetchMode("assoc");
+			$query = "SELECT 1 AS UppErCasEvar";
+			$result = $this->magdb->QueryRow($query);
+			$this->assertEqual($result["uppercasevar"], 1);
+
 		}
 
 	}

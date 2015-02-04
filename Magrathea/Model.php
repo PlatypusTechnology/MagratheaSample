@@ -106,7 +106,9 @@ abstract class MagratheaModel{
 			array_push($arr_Fields, $field);
 			$arr_Values[$field] = $this->$field;
 		}
-		$query_run = "INSERT INTO ".$this->dbTable." (".implode(",", $arr_Fields).") VALUES (:".implode(",:", $arr_Fields).") ";
+		// old query, for pear mdb2 driver
+		// $query_run = "INSERT INTO ".$this->dbTable." (".implode(",", $arr_Fields).") VALUES (:".implode(",:", $arr_Fields).") ";
+		$query_run = "INSERT INTO ".$this->dbTable." (".implode(",", $arr_Fields).") VALUES (".implode(", ", array_fill(0, count($arr_Fields), "?")).") ";
 		$lastId = Magdb::Instance()->PrepareAndExecute($query_run, $arr_Types, $arr_Values);
 		$pk = $this->dbPk;
 		$this->$pk = $lastId;
@@ -116,13 +118,17 @@ abstract class MagratheaModel{
 		$arr_Types = array();
 		$arr_Fields = array();
 		$arr_Values = array();
+		$pkField = $this->dbPk;
 		foreach( $this->dbValues as $field => $type ){
+			if( $field == $pkField ) continue;
 			$arr_Values[$field] = $this->$field;
-			if( $field == $this->dbPk ) continue;
 			array_push($arr_Types, $this->GetDataTypeFromField($type));
-			array_push($arr_Fields, $field."=:".$field);
+			array_push($arr_Fields, $field."= ? ");
 		}
-		$query_run = "UPDATE ".$this->dbTable." SET ".implode(",", $arr_Fields)." WHERE ".$this->dbPk."=:".$this->dbPk;
+		$query_run = "UPDATE ".$this->dbTable." SET ".implode(",", $arr_Fields)." WHERE ".$this->dbPk."= ? ";
+
+		$arr_Values[$pkField] = $this->$pkField;
+		$arr_Types[$pkField] = $this->GetDataTypeFromField($pkField);
 		Magdb::Instance()->PrepareAndExecute($query_run, $arr_Types, $arr_Values);
 		return true;
 	}
@@ -130,7 +136,9 @@ abstract class MagratheaModel{
 		$pkField = $this->dbPk;
 		$arr_Types[$pkField] = $this->GetDataTypeFromField($this->dbValues[$pkField]);
 		$arr_Values[$pkField] = $this->$pkField;
-		$query_run = "DELETE FROM ".$this->dbTable." WHERE ".$this->dbPk."=:".$this->dbPk;
+		// old query, for pear mdb2 driver
+		// $query_run = "DELETE FROM ".$this->dbTable." WHERE ".$this->dbPk."=:".$this->dbPk;
+		$query_run = "DELETE FROM ".$this->dbTable." WHERE ".$this->dbPk."= ? ";
 		return Magdb::Instance()->PrepareAndExecute($query_run, $arr_Types, $arr_Values);
 	}
 
@@ -157,7 +165,9 @@ abstract class MagratheaModel{
 			$real_key = $this->dbAlias[$key];
 			$this->$real_key = $value;
 		} else if( is_array($this->relations["properties"]) && array_key_exists($key, $this->relations["properties"]) ){
+			$method_set = $this->relations["methods_set"][$key];
 			$this->relations["properties"][$key] = $value;
+			$this->$method_set($value);
 		} else {
 			throw new MagratheaModelException("Property ".$key." does not exists in ".get_class($this)."!");
 		}
@@ -181,8 +191,11 @@ abstract class MagratheaModel{
 			case "text":
 			case "string":
 				return "text";
+			case "boolean":
+			case "int":
 			case "integer":
 				return "integer";
+			case "double":
 			case "float":
 				return "decimal";
 			case "datetime":

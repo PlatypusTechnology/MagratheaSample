@@ -3,7 +3,6 @@
 	if(session_id() == '')
 		session_start();
 
-
   if(isset($_POST["new_config_section"])){
     $_SESSION["config_section"] = $_POST["new_config_section"];
   }

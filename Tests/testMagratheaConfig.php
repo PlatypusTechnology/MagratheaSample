@@ -12,23 +12,23 @@
 		// load a section in Static Config
 		// I check if the section that it returns is an array:
 		function testLoadSectionStaticConfig(){
-			$thisSection = MagratheaConfigStatic::GetConfigSection("general");
+			$thisSection = MagratheaConfig::Instance()->GetConfigSection("general");
 			$this->assertIsA($thisSection, "array");
 		}
 
 		// config file must have a default environment option
 		function testConfigShouldHaveADefaultEnvironment(){
-			$env = MagratheaConfigStatic::GetConfig("general/use_environment");
+			$env = MagratheaConfig::Instance()->GetEnvironment();
 			$this->assertNotNull($env);
 		}
 
 		// required fields
 		function testConfigRequiredFields(){
-			$env = MagratheaConfigStatic::GetConfig("general/use_environment");
-			$site_path = MagratheaConfigStatic::GetConfig($env."/site_path");
-			$magrathea_path = MagratheaConfigStatic::GetConfig($env."/magrathea_path");
-			$compress_js = MagratheaConfigStatic::GetConfig($env."/compress_js");
-			$compress_css = MagratheaConfigStatic::GetConfig($env."/compress_css");
+			$env = MagratheaConfig::Instance()->GetConfig("general/use_environment");
+			$site_path = MagratheaConfig::Instance()->GetConfig($env."/site_path");
+			$magrathea_path = MagratheaConfig::Instance()->GetConfig($env."/magrathea_path");
+			$compress_js = MagratheaConfig::Instance()->GetConfig($env."/compress_js");
+			$compress_css = MagratheaConfig::Instance()->GetConfig($env."/compress_css");
 			$this->assertNotNull($site_path);
 			$this->assertNotNull($magrathea_path);
 			$this->assertNotNull($compress_js);
@@ -43,11 +43,11 @@
 		private $configPath;
 
 		function setUp(){
-			$this->configPath = MagratheaConfigStatic::GetConfig("default/site_path")."../configs/";
+			$this->configPath = MagratheaConfig::Instance()->GetConfig("default/site_path")."../configs/";
 
 			if( file_exists($this->configPath."test_conf.conf"))
 				unlink($this->configPath."test_conf.conf");
-			$this->magConfig = new MagratheaConfig();
+			$this->magConfig = new MagratheaConfigFile();
 			$this->magConfig->setPath($this->configPath);
 			$this->magConfig->setFile("test_conf.conf");
 		}
@@ -101,7 +101,7 @@
 			$this->magConfig->setConfig($confs);
 			$this->magConfig->Save(false);
 
-			$newConf = new MagratheaConfig();
+			$newConf = new MagratheaConfigFile();
 			$newConf->setPath($this->configPath);
 			$newConf->setFile("test_conf.conf");
 			$var = $newConf->GetConfig("config_test");
@@ -123,7 +123,7 @@
 			$this->magConfig->setConfig($confs);
 			$this->magConfig->Save(true);
 
-			$newConf = new MagratheaConfig();
+			$newConf = new MagratheaConfigFile();
 			$newConf->setPath($this->configPath);
 			$newConf->setFile("test_conf.conf");
 			$section = $newConf->GetConfig();

@@ -9,8 +9,8 @@
 		}
 
 		private function GetLogFilePath(){
-			$env = MagratheaConfigStatic::GetConfig("general/use_environment");
-			$magrathea_path = MagratheaConfigStatic::GetConfig($env."/magrathea_path");
+			$env = MagratheaConfig::Instance()->GetConfig("general/use_environment");
+			$magrathea_path = MagratheaConfig::Instance()->GetConfig($env."/magrathea_path");
 			$logPath = $magrathea_path."logs/log.txt";
 			return $logPath;
 		}
@@ -26,8 +26,8 @@
 			$logPath = $this->GetLogFilePath();
 			$GLOBALS["log"] = "all";
 
-			$env = MagratheaConfigStatic::GetConfig("general/use_environment");
-			$configSection = MagratheaConfigStatic::GetConfigSection($env);
+			$env = MagratheaConfig::Instance()->GetConfig("general/use_environment");
+			$configSection = MagratheaConfig::Instance()->GetConfigSection($env);
 			$magdb = Magdb::Instance();
 			$magdb->SetConnection($configSection["db_host"], $configSection["db_name"], $configSection["db_user"], $configSection["db_pass"]);
 

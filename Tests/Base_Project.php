@@ -1,12 +1,10 @@
 <pre>
 <?php
 
-//	ini_set('display_errors', 1);
+	ini_set('display_errors', 1);
 //	error_reporting(E_ALL);
 
-	$GLOBALS["log"] = false;
-
-	include(__DIR__."/../Magrathea/LOAD.php");
+	include_once(__DIR__."/../Magrathea/LOAD.php");
 	require_once("simpletest/autorun.php");
 
 	include(__DIR__."/../app/Models/Movie.php");
@@ -34,7 +32,6 @@
 
 		public static function truncateTables(){
 			$magdb = Magdb::Instance();
-			$magdb = $magdb;
 			$query = "TRUNCATE TABLE tab_movies";
 			$magdb->Query($query);
 			$query = "TRUNCATE TABLE tab_directors";

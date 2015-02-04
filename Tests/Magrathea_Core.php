@@ -4,7 +4,7 @@
 //	ini_set('display_errors', 1);
 //	error_reporting(E_ALL);
 
-	include(__DIR__."/../Magrathea/LOAD.php");
+	include_once(__DIR__."/../Magrathea/LOAD.php");
 	require_once("simpletest/autorun.php");
 
 	SimpleTest :: prefer(new TextReporter());

@@ -268,6 +268,7 @@ function loadPlugins(){
 
 
 function loadTests(){
+	history.replaceState({}, "Magrathea Admin - Config", "admin.php?area=tests");
 	$.ajax({
 		url: "?page=load_tests.php",
 		success: function(data){

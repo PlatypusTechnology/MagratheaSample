@@ -16,10 +16,11 @@
 #######################################################################################
 
 function p_r($debugme, $beautyme=false){
+	$trace = debug_backtrace();
 	if( $beautyme ){
 		echo nice_p_r($debugme); 
 	} else { 
-		echo "<pre>"; print_r($debugme); echo "</pre>";
+		echo "<pre>".$trace[0]["file"].":".$trace[0]["line"]."\n"; print_r($debugme); echo "</pre>";
 	}
 }
 
@@ -56,7 +57,7 @@ function magrathea_printFields($fields_arr, $selected = null){
 
 
 function magrathea_getTypesArr(){
-	$types = array("int", "string", "text", "float", "datetime");
+	$types = array("int", "boolean", "string", "text", "float", "datetime");
 	return $types;
 }
 

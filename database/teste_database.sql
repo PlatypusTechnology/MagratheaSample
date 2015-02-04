@@ -47,14 +47,6 @@ CREATE TABLE `tab_actors` (
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
-DELIMITER ;;
-/*!50003 SET SESSION SQL_MODE="" */;;
-/*!50003 CREATE */ /*!50017 DEFINER=`test_user`@`localhost` */ /*!50003 TRIGGER `tab_actors_create` BEFORE INSERT ON `tab_actors` FOR EACH ROW SET NEW.created_at = NOW(), NEW.updated_at = NOW() */;;
-/*!50003 SET SESSION SQL_MODE="" */;;
-/*!50003 CREATE */ /*!50017 DEFINER=`test_user`@`localhost` */ /*!50003 TRIGGER `tab_actors_update` BEFORE UPDATE ON `tab_actors` FOR EACH ROW SET NEW.updated_at = NOW() */;;
-DELIMITER ;
-/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;
-
 
 # Dump of table tab_directors
 # ------------------------------------------------------------
@@ -80,14 +72,6 @@ VALUES
 
 /*!40000 ALTER TABLE `tab_directors` ENABLE KEYS */;
 UNLOCK TABLES;
-
-DELIMITER ;;
-/*!50003 SET SESSION SQL_MODE="" */;;
-/*!50003 CREATE */ /*!50017 DEFINER=`test_user`@`localhost` */ /*!50003 TRIGGER `tab_directors_create` BEFORE INSERT ON `tab_directors` FOR EACH ROW SET NEW.created_at = NOW(), NEW.updated_at = NOW() */;;
-/*!50003 SET SESSION SQL_MODE="" */;;
-/*!50003 CREATE */ /*!50017 DEFINER=`test_user`@`localhost` */ /*!50003 TRIGGER `tab_directors_update` BEFORE UPDATE ON `tab_directors` FOR EACH ROW SET NEW.updated_at = NOW() */;;
-DELIMITER ;
-/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;
 
 
 # Dump of table tab_movies
@@ -119,14 +103,6 @@ VALUES
 
 /*!40000 ALTER TABLE `tab_movies` ENABLE KEYS */;
 UNLOCK TABLES;
-
-DELIMITER ;;
-/*!50003 SET SESSION SQL_MODE="" */;;
-/*!50003 CREATE */ /*!50017 DEFINER=`test_user`@`localhost` */ /*!50003 TRIGGER `tab_movies_create` BEFORE INSERT ON `tab_movies` FOR EACH ROW SET NEW.created_at = NOW(), NEW.updated_at = NOW() */;;
-/*!50003 SET SESSION SQL_MODE="" */;;
-/*!50003 CREATE */ /*!50017 DEFINER=`test_user`@`localhost` */ /*!50003 TRIGGER `tab_movies_update` BEFORE UPDATE ON `tab_movies` FOR EACH ROW SET NEW.updated_at = NOW() */;;
-DELIMITER ;
-/*!50003 SET SESSION SQL_MODE=@OLD_SQL_MODE */;
 
 
 

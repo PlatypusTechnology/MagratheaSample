@@ -1,11 +1,12 @@
 <?php
 
 	// include pear (if not installed):
-	set_include_path(".".PATH_SEPARATOR.("/Users/paulohenrique/www/magrathea_sample/Magrathea/libs/pear/php".PATH_SEPARATOR.get_include_path()));
+	set_include_path(".".PATH_SEPARATOR.("/Users/paulohenrique/www/magrathea_sample/Magrathea/libs/pear".PATH_SEPARATOR.get_include_path()));
 
 	session_start();
 
 	error_reporting(E_ALL ^ E_STRICT);
+//	error_reporting(E_ALL);
 
 	$magrathea_path = "/Users/paulohenrique/www/magrathea_sample/Magrathea";
 	$site_path = "/Users/paulohenrique/www/magrathea_sample";
@@ -25,5 +26,7 @@
 	$Smarty->assign("View", $View);
 
 	$View->IsRelativePath(false); // for mod_rewrite
+
+//	MagratheaDebugger::Instance()->SetType("dev");
 
 ?>

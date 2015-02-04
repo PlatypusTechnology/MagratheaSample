@@ -1,7 +1,5 @@
 <?php
 
-	global $magdb;
-
 	class TestOfModels extends UnitTestCase{
 
 		function setUp(){

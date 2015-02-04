@@ -10,7 +10,7 @@ $config = MagratheaConfig::Instance()->GetConfig();
 <div class="row-fluid">
 	<div class="span12 mag_section">
 		<header>
-			<span class="breadc">Migrations</span>
+			<span class="breadc">Database</span>
 		</header>
 		<content>
 			<p>Manage and update database migrations.</p>

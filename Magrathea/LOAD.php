@@ -3,9 +3,14 @@
 $path = __DIR__."/";
 include_once($path."libs/Smarty/Smarty.class.php");
 
+// database changing:
+//require ($path."Database.php");
+require ($path."MagratheaDatabase.php");
+
+
+
 require ($path."Exceptions.php");
 require ($path."Functions.php");
-require ($path."Database.php");
 require ($path."MagratheaConfig.php");
 require ($path."MagratheaController.php");
 require ($path."Model.php");

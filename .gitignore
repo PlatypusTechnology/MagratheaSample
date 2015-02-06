@@ -2,3 +2,4 @@ magrathea.conf
 .DS_Store
 environment.txt
 app/Views/_compiled/*
+logs

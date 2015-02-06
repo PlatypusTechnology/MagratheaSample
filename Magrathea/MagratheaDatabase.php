@@ -187,21 +187,30 @@ class Magdb{
 	 */
 	private function FetchResult($result, $firstLineOnly=false){
 		$arrResult = array();
+		$isArrayResponse = false;
 		switch($this->fetchmode){
 			case @FETCH_OBJECT:
 				$fetch_fn = "fetch_object";
 			break;
 			case @FETCH_NUM:
 				$fetch_fn = "fetch_num";
+				$isArrayResponse = true;
 			break;
 			case @FETCH_ASSOC:
 			default:
 				$fetch_fn = "fetch_assoc";
+				$isArrayResponse = true;
 			break;
 		}
-		if($firstLineOnly) $arrResult = $result->$fetch_fn();
+		if($firstLineOnly){
+			$arrResult = $result->$fetch_fn();
+			if($isArrayResponse)
+				$arrResult = array_change_key_case($arrResult, CASE_LOWER);
+		}
 		else 
-			while( $obj = @array_change_key_case($result->$fetch_fn(), CASE_LOWER) ){
+			while( $obj = $result->$fetch_fn() ){
+				if($isArrayResponse)
+					$obj = array_change_key_case($obj, CASE_LOWER);
 				array_push($arrResult, $obj);
 			}
 		return $arrResult;
@@ -218,7 +227,8 @@ class Magdb{
 		$this->LogControl($sql);
 		$this->OpenConnectionPlease();
 		$result = $this->mysqli->query($sql);
-		$this->count = $result->num_rows;
+		if(is_object($result))
+			$this->count = $result->num_rows;
 		$this->CloseConnectionThanks();
 		return $result;
 	}

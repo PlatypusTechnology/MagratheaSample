@@ -1,15 +1,12 @@
 <?php
 
-	// include pear (if not installed):
-	set_include_path(".".PATH_SEPARATOR.("/Users/paulohenrique/www/magrathea_sample/Magrathea/libs/pear".PATH_SEPARATOR.get_include_path()));
-
 	session_start();
 
 	error_reporting(E_ALL ^ E_STRICT);
 //	error_reporting(E_ALL);
 
-	$magrathea_path = "/Users/paulohenrique/www/magrathea_sample/Magrathea";
-	$site_path = "/Users/paulohenrique/www/magrathea_sample";
+	$magrathea_path = "/Users/paulovelho/Sites/Magrathea_sample/Magrathea";
+	$site_path = "/Users/paulovelho/Sites/Magrathea_sample";
 
 	include($magrathea_path."/LOAD.php");
 

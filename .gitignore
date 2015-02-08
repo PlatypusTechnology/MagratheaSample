@@ -3,3 +3,5 @@ magrathea.conf
 environment.txt
 app/Views/_compiled/*
 logs
+_Magrathea
+

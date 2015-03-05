@@ -4,8 +4,6 @@
 //	ini_set('display_errors', 1);
 //	error_reporting(E_ALL);
 
-	require_once("simpletest/autorun.php");
-
 	SimpleTest :: prefer(new TextReporter());
 
 	echo "</pre><hr/><br/>";
@@ -14,9 +12,9 @@
 	echo "Database Tests: [ok]<br/>";
 	echo "<br/><hr/><br/><pre>";
 
-	include("testMagratheaConfig.php");
-	include("testMagratheaLogger.php");
-	include("testMagratheaDatabase.php");
+	include("_MagratheaConfig.php");
+	include("_MagratheaLogger.php");
+	include("_MagratheaDatabase.php");
 
 ?>
 </pre>

@@ -4,8 +4,6 @@
 	ini_set('display_errors', 1);
 //	error_reporting(E_ALL);
 
-	require_once("simpletest/autorun.php");
-
 	include(__DIR__."/../app/Models/Movie.php");
 	include(__DIR__."/../app/Models/Director.php");
 	include(__DIR__."/../app/Models/Actor.php");

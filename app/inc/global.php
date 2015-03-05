@@ -3,10 +3,9 @@
 	session_start();
 
 	error_reporting(E_ALL ^ E_STRICT);
-//	error_reporting(E_ALL);
+	error_reporting(1);
 
 	include("configs.php");
-
 	include($magrathea_path."/LOAD.php");
 
 //	MagratheaDebugger::Instance()->SetType("debug");
@@ -17,12 +16,12 @@
 	$Smarty->config_dir   = $site_path."/app/Views/configs";
 	$Smarty->cache_dir    = $site_path."/app/Views/_cache";
 	$Smarty->configLoad("site.conf");
-	
-	$View = new MagratheaView();
-	$Smarty->assign("View", $View);
+	$Smarty->assign("View", MagratheaView::Instance());
 
-	$View->IsRelativePath(false); // for mod_rewrite
+	MagratheaView::Instance()->IsRelativePath(false); // for mod_rewrite
 
-//	MagratheaDebugger::Instance()->SetType("dev");
+	// wanna debug? here's your debug!
+	// options: dev; debug; log; none;
+	MagratheaDebugger::Instance()->SetType(MagratheaDebugger::DEBUG);
 
 ?>

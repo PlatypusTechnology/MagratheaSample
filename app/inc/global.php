@@ -5,8 +5,7 @@
 	error_reporting(E_ALL ^ E_STRICT);
 //	error_reporting(E_ALL);
 
-	$magrathea_path = "/Users/paulovelho/Sites/Magrathea_sample/Magrathea";
-	$site_path = "/Users/paulovelho/Sites/Magrathea_sample";
+	include("configs.php");
 
 	include($magrathea_path."/LOAD.php");
 

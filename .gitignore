@@ -2,6 +2,7 @@ magrathea.conf
 .DS_Store
 environment.txt
 app/Views/_compiled/*
+configs.php
 logs
 app/plugins
 _Magrathea

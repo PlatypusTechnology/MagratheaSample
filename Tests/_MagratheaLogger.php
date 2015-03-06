@@ -8,47 +8,59 @@
 		function tearDown(){
 		}
 
-		private function GetLogFilePath(){
-			$env = MagratheaConfig::Instance()->GetEnvironment();
-			$magrathea_path = MagratheaConfig::Instance()->GetConfig($env."/magrathea_path");
-			$logPath = $magrathea_path."logs/log.txt";
-			return $logPath;
+		private function GetLogFile(){
+			return "log.txt";
 		}
 
 		private function deleteLogFile(){
-			$logPath = $this->GetLogFilePath();
+			$site_path = MagratheaConfig::Instance()->GetFromDefault("site_path");
+			$logPath = $site_path."/../logs/".$this->GetLogFile();
 			@unlink($logPath);
 			$this->assertFalse(file_exists($logPath));
 		}
 
 		// test log database
 		function testLogDatabase(){
-			return true;
-			$logPath = $this->GetLogFilePath();
-			$GLOBALS["log"] = "all";
+			echo "testing MagratheaLogger Log database... <br/>";
+			$logFile = $this->GetLogFile();
+			$site_path = MagratheaConfig::Instance()->GetFromDefault("site_path");
+			$logPath = $site_path."/../logs/".$logFile;
 
+			MagratheaDebugger::Instance()->SetType(MagratheaDebugger::LOG)->SetLogFile($logFile);
 			$env = MagratheaConfig::Instance()->GetConfig("general/use_environment");
 			$configSection = MagratheaConfig::Instance()->GetConfigSection($env);
-			$magdb = Magdb::Instance();
+			$magdb = MagratheaDatabase::Instance();
 			$magdb->SetConnection($configSection["db_host"], $configSection["db_name"], $configSection["db_user"], $configSection["db_pass"]);
 
+			// not log query:
+			$query = "SELECT 1 AS ok";
+			$magdb->Query($query);
+			$this->assertFalse(file_exists($logPath));
+
+			// do log query:
+			MagratheaDebugger::Instance()->LogQueries(true);
 			$query = "SELECT 1 AS ok";
 			$magdb->Query($query);
 			$this->assertTrue(file_exists($logPath));
+
+			// goes back to default:
+			MagratheaDebugger::Instance()->SetLogFile(null);
+
 		}
 
 		// tests if new lines are added to the log file
-		// logger not being tested... =(
 		function testIncrementLogger(){
-
-			return true;
+			echo "testing MagratheaLogger Log increment... <br/>";
+			$logFile = $this->GetLogFile();
+			$site_path = MagratheaConfig::Instance()->GetFromDefault("site_path");
+			$logPath = $site_path."/../logs/".$logFile;
 
 			$message = "this nice message for testing";
-			MagratheaLogger::Log($message);
+			MagratheaLogger::Log($message, $logFile);
 			$initialFile = file_get_contents($logPath);
 
 			$message2 = "adding a new message for testing";
-			MagratheaLogger::Log($message2);
+			MagratheaLogger::Log($message2, $logFile);
 			$finalFile = file_get_contents($logPath);
 
 			$this->assertTrue(($finalFile > $initialFile));

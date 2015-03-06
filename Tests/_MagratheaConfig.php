@@ -12,18 +12,21 @@
 		// load a section in Static Config
 		// I check if the section that it returns is an array:
 		function testLoadSectionStaticConfig(){
+			echo "testing magratheaConfig loading static config... <br/>";
 			$thisSection = MagratheaConfig::Instance()->GetConfigSection("general");
 			$this->assertIsA($thisSection, "array");
 		}
 
 		// config file must have a default environment option
 		function testConfigShouldHaveADefaultEnvironment(){
+			echo "testing magratheaConfig confirming we have a default... <br/>";
 			$env = MagratheaConfig::Instance()->GetEnvironment();
 			$this->assertNotNull($env);
 		}
 
 		// required fields
 		function testConfigRequiredFields(){
+			echo "testing magratheaConfig checking required fields... <br/>";
 			$env = MagratheaConfig::Instance()->GetConfig("general/use_environment");
 			$site_path = MagratheaConfig::Instance()->GetConfig($env."/site_path");
 			$magrathea_path = MagratheaConfig::Instance()->GetConfig($env."/magrathea_path");
@@ -43,7 +46,7 @@
 		private $configPath;
 
 		function setUp(){
-			$this->configPath = MagratheaConfig::Instance()->GetConfig("default/site_path")."../configs/";
+			$this->configPath = MagratheaConfig::Instance()->GetConfig("default/site_path")."/../configs/";
 
 			if( file_exists($this->configPath."test_conf.conf"))
 				unlink($this->configPath."test_conf.conf");
@@ -58,12 +61,14 @@
 
 		// Create a new Config
 		function testCreateConfigFile(){
+			echo "testing magratheaConfig checking if we can create a config file... <br/>";
 			$this->magConfig->Save();
 			$this->assertTrue(file_exists($this->configPath."test_conf.conf"));
 		}
 
 		// Test Save a new Config with something
 		function testSaveConfigFile(){
+			echo "testing magratheaConfig saving a config file... <br/>";
 			$confs = array("config_test" => "ok", 
 				"config_test2" => "another_ok" );
 			$this->magConfig->setConfig($confs);
@@ -73,6 +78,7 @@
 
 		// if you save configs with sections and without sections in the same file, it shoulf be an error
 		function testErrorWhenSavingAMixedArrayOfConfig(){
+			echo "testing magratheaConfig confirming an error when config file is invalid... <br/>";
 			$confs = array(
 				'this_section' => array(
 					'this_var' => 'ok', 
@@ -86,6 +92,7 @@
 
 		// save a single item with section
 		function testSaveASingleItemWithSections(){
+			echo "testing magratheaConfig saving a config file with sections... <br/>";
 			$confs = array(
 				'this_section' => array(
 					'this_var' => 'ok' )
@@ -97,6 +104,7 @@
 
 		// Load a var from a config file
 		function testLoadVarFromConfigFile(){
+			echo "testing magratheaConfig loading a var from a previously saved config file... <br/>";
 			$confs = array('config_test' => "ok" );
 			$this->magConfig->setConfig($confs);
 			$this->magConfig->Save(false);
@@ -111,6 +119,7 @@
 
 		// Load a var from a section from a config file
 		function testLoadVarFromSection(){
+			echo "testing magratheaConfig loading a var from a section... <br/>";
 			$confs = array(
 				'this_section' => array(
 					'this_var' => 'ok', 

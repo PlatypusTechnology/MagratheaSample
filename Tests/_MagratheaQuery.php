@@ -14,6 +14,7 @@
 
 		// test simple query:
 		function testSimpleQuery(){
+			echo "testing query: simplequery... <br/>";
 			$query = MagratheaQuery::Create()->Obj("Director");
 			$directors = DirectorControl::Run($query);
 			$this->assertEqual(3, count($directors));
@@ -21,6 +22,7 @@
 
 		// test simple query order:
 		function testSimpleQueryOrder(){
+			echo "testing query: query order... <br/>";
 			$query = MagratheaQuery::Create()->Obj("Movie")->Order("year ASC");
 			$movies = MovieControl::Run($query);
 			$this->assertEqual("1982", $movies[0]->year);
@@ -28,6 +30,7 @@
 
 		// select movies and directors between 90s
 		function testComplexQueryGettingObjectsWithRelatedHasOne(){
+			echo "testing query: has one... <br/>";
 			$query = MagratheaQuery::Create()->Obj("Movie")->HasOne("Director", "director_id")->Where("year BETWEEN 1990 AND 1999")->Order("tab_movies.name DESC");
 			$movies = MovieControl::Run($query);
 			$this->assertEqual(2, count($movies));
@@ -36,6 +39,7 @@
 
 		// select directors with movies between 80s
 		function testComplexQueryGettingObjectsWithRelatedBelongsTo(){
+			echo "testing query: belongs to... <br/>";
 			$query = MagratheaQuery::Create()->Obj("Director")->BelongsTo("Movie", "director_id")->Where("tab_movies.year BETWEEN 1980 AND 1989")->Order("tab_movies.year ASC");
 			$directors = DirectorControl::Run($query);
 			$this->assertEqual(2, count($directors));

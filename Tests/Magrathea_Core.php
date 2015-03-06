@@ -15,6 +15,7 @@
 	include("_MagratheaConfig.php");
 	include("_MagratheaLogger.php");
 	include("_MagratheaDatabase.php");
+	include("_MagratheaRoutes.php");
 
 ?>
 </pre>
